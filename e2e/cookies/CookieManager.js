@@ -21,10 +21,13 @@ class CookieManager {
        }).length*/
 
         var testCookie = browser.getCookie('lastuser')
-            console.log(testCookie); // outputs: { name: 'test', value: '123' }
+            console.log(testCookie);
 
             var allCookies = browser.getCookie()
             //console.log(allCookies);
+
+          var userCookie = browser.getCookie('lastuser').value;
+                 console.log(userCookie);
 
     }
 }
