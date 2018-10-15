@@ -5,9 +5,6 @@ class CookieManager {
     constructor() {
 
     }
-    getInstances(path) {
-
-    }
 
     /**
     * return the actual user located into cookie

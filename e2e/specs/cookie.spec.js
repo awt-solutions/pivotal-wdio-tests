@@ -6,21 +6,12 @@ describe('pivotal tracker verify user cookie', () => {
     let dashboard;
 
     before(() => {
-        dashboard = SingIn.loginAs(username, password);
+        SingIn.loginAs(username, password);
     });
 
-    it('should get user cookies using protocol command', () => {
-        console.log(CookieManager.getUserCookie());
-    });
-
-    it('switch other user from cookie', () => {
-        let otherusername = 'hapsneeze';
-        let otherpassword = 'test12345';
-        CookieManager.setUserCookie(otherusername,otherpassword);
-    });
-
-    it('delete user cookies', () => {
-        let userCookie = CookieManager.getUserCookie();
-        CookieManager.deleteUserCookie(userCookie);
-    });
+    it('should singin a distinc user cookies', () => {
+            let newusername = 'elianor8313@gmail.com';
+            let newpassword = 'Control123';
+            SingIn.newCredentials(newusername, newpassword);
+        });
 });
