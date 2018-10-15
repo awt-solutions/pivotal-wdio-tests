@@ -67,16 +67,6 @@ class SignIn extends Page {
             console.log('User logged was:'+' '+currentUserSession);
             CookieManager.deleteUserCookie(currentUserSession);
         }
-
-        /*let signIn = new SignIn();
-        signIn.open();
-        signIn.setUserNameTextField(userName);
-        signIn.clickNextButton();
-        signIn.setPasswordPassField(password);*/
-        //CookieManager.setUserCookie(userName, password);
-
-        //console.log('User logged is:'+' '+CookieManager.getUserCookie());
-        
         return this.loginAs(userName, password);
     }
 }

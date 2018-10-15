@@ -3,8 +3,6 @@ const CookieManager = require('../cookies/CookieManager');
 let username = 'hapsneeze';
 let password = 'test12345';
 describe('pivotal tracker verify user cookie', () => {
-    let dashboard;
-
     before(() => {
         SingIn.loginAs(username, password);
     });
