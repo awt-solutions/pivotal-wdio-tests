@@ -66,9 +66,6 @@ class SignIn extends Page {
         if (typeof userName !== currentUserSession){
             console.log('User logged was:'+' '+currentUserSession);
             CookieManager.deleteUserCookie(currentUserSession);
-            let signOut = new SignOut();
-            signOut.clickProfileButton();
-            signOut.clickSignOutButton();
         }
 
         /*let signIn = new SignIn();
@@ -80,7 +77,7 @@ class SignIn extends Page {
 
         //console.log('User logged is:'+' '+CookieManager.getUserCookie());
         
-        return loginAs(userName, password);
+        return this.loginAs(userName, password);
     }
 }
 module.exports = SignIn;

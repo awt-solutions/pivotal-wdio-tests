@@ -10,8 +10,7 @@ class CookieManager {
     * return the actual user located into cookie
     */
     static getUserCookie(){
-      var userCookie = browser.getCookie('lastuser').value;
-      return userCookie;
+      return browser.getCookie('lastuser').value;
     }
 
     /**
@@ -27,7 +26,7 @@ class CookieManager {
     */
     static deleteUserCookie(user){
        console.log('the user deleted from cookies is: '+ user);
-       browser.deleteCookie(user);
+       browser.deleteCookie();
     }
 
 }

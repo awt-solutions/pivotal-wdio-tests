@@ -10,8 +10,8 @@ describe('pivotal tracker verify user cookie', () => {
     });
 
     it('should singin a distinc user cookies', () => {
-            let newusername = 'elianor8313@gmail.com';
-            let newpassword = 'Control123';
-            SingIn.newCredentials(newusername, newpassword);
-        });
+        let newusername = 'elianor8313@gmail.com';
+        let newpassword = 'Control123';
+        SingIn.newCredentials(newusername, newpassword);
+    });
 });
