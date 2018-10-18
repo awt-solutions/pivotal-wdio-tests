@@ -10,7 +10,7 @@ describe('pivotal tracker project page add task to story', () => {
     let storyTasks;
 
     before(() => {
-        dashboard = SingIn.loginAs(username, password);
+        dashboard = SingIn.credentials(username, password);
         project = dashboard.openProjectById(projectID);
     });
 

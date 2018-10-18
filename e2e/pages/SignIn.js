@@ -1,7 +1,6 @@
 const Page = require('./Page');
 const Dashboard = require('./Dashboard');
 let CommonActions = require('../core/ui/CommonActions.js');
-const CookieManager = require('../core/ui/CookieManager');
 
 /**
  * this class contains methods of SignIn.
@@ -41,32 +40,30 @@ class SignIn extends Page {
     }
 
     /**
-     * Smart method for login
-     * @param userName to login with
-     * @param password to login with
-     */
-    static loginAs(userName, password) {
+    * Smart method for login
+    * @param userName to login with
+    * @param password to login with
+    */
+    static credentials(userName, password){
         let signIn = new SignIn();
         signIn.open();
+
+        try{
+          var currentUserSession = browser.getCookie('lastuser').value;
+          //Check if user username is logged already.
+          if (typeof userName !== currentUserSession && currentUserSession!== "undefined") {
+             browser.deleteCookie();
+          }
+        }
+        catch(error){
+          console.log("Is not any user logged cookie already: " + currentUserSession);
+          console.error(error);
+        }
+
         signIn.setUserNameTextField(userName);
         signIn.clickNextButton();
         signIn.setPasswordPassField(password);
         return signIn.clickSignInButton();
-    }
-
-    /**
-     * Smart method for login
-     * @param userName to login with
-     * @param password to login with
-     */
-    static newCredentials(userName, password) {
-        var currentUserSession = CookieManager.getUserCookie();
-        //Check if user username is logged already.
-        if (typeof userName !== currentUserSession) {
-            browser.log('User logged was:' + ' ' + currentUserSession);
-            CookieManager.deleteUserCookie(currentUserSession);
-        }
-        return this.loginAs(userName, password);
     }
 }
 

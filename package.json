@@ -12,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.2.0",
+    "config.json": "0.0.4",
     "eslint-plugin-webdriverio": "^1.0.1",
     "wdio-allure-reporter": "^0.6.2",
     "wdio-eslint-service": "0.0.3",
@@ -21,7 +22,6 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "config.json": "0.0.4",
     "selenium-standalone": "^6.15.3"
   }
 }

@@ -26,7 +26,7 @@ describe('pivotal tracker page new project', () => {
     };
 
     before(() => {
-        dashboard = SingIn.loginAs(username, password);
+        dashboard = SingIn.credentials(username, password);
     });
 
     it('should create a new private project with first account', () => {

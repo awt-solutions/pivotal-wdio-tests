@@ -10,7 +10,7 @@ describe('pivotal tracker page', () => {
     let workspaceName = 'TestWorkspace'+Math.floor(Math.random() * testindex);
     //Sign in precondition
     before(() => {
-        dashboard = SingIn.loginAs(username, password);
+        dashboard = SingIn.credentials(username, password);
     });
 
     it('should create a new workspace named: '+workspaceName, () => {

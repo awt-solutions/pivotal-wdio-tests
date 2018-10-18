@@ -9,7 +9,7 @@ describe('pivotal tracker project page add story', () => {
     let story;
 
     before(() => {
-        dashboard = SingIn.loginAs(username, password);
+        dashboard = SingIn.credentials(username, password);
         project = dashboard.openProjectById(projectID);
     });
 
