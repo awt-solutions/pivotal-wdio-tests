@@ -32,5 +32,20 @@ class APIPivotalManager {
             headers: {'X-TrackerToken': token}
         });
     }
+
+    ///https://www.pivotaltracker.com/services/v5/projects/$PROJECT_ID/stories
+    static RequestPostStories(token, project_id, body) {
+            axios({
+                method: 'POST',
+                url: API_PROJECTS_URL.concat(`/{project_id}/stories`),
+                headers: {'X-TrackerToken': token, 'Content-Type':'application/json'},
+                data: body
+            }).then((res) => {
+                 console.log("RESPONSE RECEIVED: ", res);
+               })
+               .catch((err) => {
+                 console.log("AXIOS ERROR: ", err);
+               });;
+        }
 }
 module.exports = APIPivotalManager;
