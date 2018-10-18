@@ -1,7 +1,8 @@
+var config = require('config.json')('./config.json');
 const SingIn = require('../pages/SignIn');
-let username = 'kevinherrera2';
-let password = '70723844';
-let projectID = '2203114';
+let username = config.username1;
+let password = config.password1;
+let projectID = config.projectID;
 describe('pivotal tracker project page add story', () => {
     let project;
     let dashboard;

@@ -1,6 +1,9 @@
 {
-  "username": "",
-  "password": "",
+  "username": "hapsneeze",
+  "password": "test12345",
+  "username1": "kevinherrera2",
+  "password1": "70723844",
+  "projectID": "2203114",
   "theme": "",
 
   "sauceUserName": "",
@@ -9,5 +12,4 @@
   "browserName": "",
   "platform": "",
   "version": ""
-
 }

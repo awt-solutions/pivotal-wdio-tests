@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "config.json": "0.0.4",
     "selenium-standalone": "^6.15.3"
   }
 }
