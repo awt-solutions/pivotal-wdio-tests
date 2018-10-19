@@ -15,12 +15,8 @@ describe('pivotal tracker project page add task to story', () => {
         // create story from api
     });
 
-    it('should create a new task on the of this project', () => {
-        story = project.getStoryPageOfProject();
-        storyTasks = story.showStoryFields('test');
-        storyTasks.clickStartAddingTaskButton();
-        storyTasks.setTaskTitleTextField('new task');
-        storyTasks.clickSaveAndAddNewTaskButton();
+    it('should create a new task on the of this story', () => {
+        //test create task on story
     });
 
     // after delete project from api
