@@ -1,6 +1,6 @@
 const SingIn = require('../pages/SignIn');
 const APIrequest = require('../rest-api/RequestManager');
-const config = require('../../testconfig.json');
+const Config = require('../../config.json');
 describe('pivotal tracker page add story on project', () => {
     let project;
     let story;
@@ -9,7 +9,7 @@ describe('pivotal tracker page add story on project', () => {
         let postProjectData = { name:'project created from api '+ new Date().getMilliseconds()};
         let response = browser.call(() => { return APIrequest.postRequest('/projects', postProjectData);});
         projectID = response.data.id;
-        let dashboard = SingIn.loginAs(config.username, config.password);
+        let dashboard = SingIn.loginAs(Config.username, Config.password);
         project = dashboard.openProjectById(projectID);
     });
 

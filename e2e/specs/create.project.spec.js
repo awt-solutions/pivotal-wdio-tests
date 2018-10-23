@@ -1,6 +1,6 @@
 const SingIn = require('../pages/SignIn');
 const APIrequest = require('../rest-api/RequestManager');
-const config = require('../../config.json');
+const Config = require('../../config.json');
 describe('pivotal tracker page create new project', () => {
 
     let dashboard;
@@ -13,10 +13,10 @@ describe('pivotal tracker page create new project', () => {
     let projectData2 = {
         name: 'test wdio 2 - ' + new Date().getMilliseconds(),
         account: 'test',
-        privacy: "public"
+        privacy: 'public'
     };
     before(() => {
-        dashboard = SingIn.loginAs(config.username, config.password);
+        dashboard = SingIn.loginAs(Config.username, Config.password);
     });
 
     it('should create a new private project with data 1', () => {
@@ -36,12 +36,6 @@ describe('pivotal tracker page create new project', () => {
         let settingsURL = config.home_page_url.concat(`/projects/${projectID1}/settings`);
         browser.url(settingsURL);
         expect(projectData1.name).to.equal(browser.getValue('input[name="project[name]"]').toLowerCase());
-        //asserting name on dashboard page
-        /*
-        browser.url(config.home_page_url.concat('/dashboard'));
-        let projectNameOnDashboard = browser.element('a[data-aid="project-name"]');
-        let visibleText = projectNameOnDashboard.selectByVisibleText(projectData1.name)
-        expect(projectData2.name).to.equal(projectNameOnDashboard.getText());*/
     });
 
     it('should create a new private project with data 2', () => {
@@ -62,13 +56,6 @@ describe('pivotal tracker page create new project', () => {
         let settingsURL = config.home_page_url.concat(`/projects/${projectID2}/settings`);
         browser.url(settingsURL);
         expect(projectData2.name).to.equal(browser.getValue('input[name="project[name]"]').toLowerCase());
-        //asserting name on dashboard page
-        /*
-        browser.url(config.home_page_url.concat('/dashboard'));
-        let projectNameOnDashboard = browser.element('a[data-aid="project-name"]');
-        let visibleText = projectNameOnDashboard.selectByVisibleText(projectData2.name)
-        expect(projectData2.name).to.equal(projectNameOnDashboard.getText());*/
-
     });
 
 

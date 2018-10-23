@@ -99,7 +99,7 @@ class CommonActions {
         return browser.getTitle();
     }
 
-    static waitAndGetValue(elementCSS){
+    static waitAndGetValue(elementCSS) {
         browser.waitForExist(elementCSS);
         browser.getValue(elementCSS);
     }

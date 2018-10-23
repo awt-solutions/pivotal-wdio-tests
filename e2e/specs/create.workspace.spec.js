@@ -1,12 +1,12 @@
 const SingIn = require('../pages/SignIn');
 const APIrequest = require('../rest-api/RequestManager');
-const config = require('../../config.json');
+const Config = require('../../config.json');
 describe('pivotal tracker page create workspaces', () => {
     let dashboard;
     let workspaceData = {name: 'Test Workspace '+ new Date().getMilliseconds()};
     //Sign in precondition
     before(() => {
-        dashboard = SingIn.loginAs(config.username, config.password);
+        dashboard = SingIn.loginAs(Config.username, Config.password);
     });
 
     it('should create a new workspace', () => {
@@ -24,7 +24,7 @@ describe('pivotal tracker page create workspaces', () => {
                 return workspaceID = workspace.id;
             }
         });
-        APIrequest.DelRequest(`/my/workspaces/${workspaceID}`)
+        APIrequest.DelRequest(`/my/workspaces/${workspaceID}`);
     });
 
 });
