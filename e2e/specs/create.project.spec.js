@@ -30,6 +30,7 @@ describe('pivotal tracker page create new project', () => {
             if (projectData1.name.toLowerCase() === project.name.toLowerCase() ) {
                 return project.id;
             }
+            return null;
         });
         //asserting name on settings page
         projectID1.toString().replace(',','');
@@ -50,6 +51,7 @@ describe('pivotal tracker page create new project', () => {
             if (projectData2.name.toLowerCase() === project.name.toLowerCase() ) {
                 return project.id;
             }
+            return null;
         });
         //asserting name on settings page
         projectID2.toString().replace(',','');

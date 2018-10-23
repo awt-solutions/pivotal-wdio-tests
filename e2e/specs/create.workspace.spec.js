@@ -18,11 +18,11 @@ describe('pivotal tracker page create workspaces', () => {
 
     after(() => {
         let response = browser.call(() => {return APIrequest.GetRequest('/my/workspaces');});
-        let workspaceID;
-        Object.values(response.data).map((workspace) => {
+        let workspaceID = Object.values(response.data).map((workspace) => {
             if (workspace.name === workspaceData.name) {
-                return workspaceID = workspace.id;
+                return workspace.id;
             }
+            return null;
         });
         APIrequest.DelRequest(`/my/workspaces/${workspaceID}`);
     });
