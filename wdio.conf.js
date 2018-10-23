@@ -267,13 +267,13 @@ exports.config = {
     // See also: https://github.com/webdriverio/wdio-cucumber-framework#cucumberopts-options
     cucumberOpts: {
         require: [
-         './src/steps/given.js',
-         './src/steps/then.js',
-         './src/steps/when.js',
+            './src/steps/given.js',
+            './src/steps/then.js',
+            './src/steps/when.js',
         ],        // <string[]> (file/dir) require files before executing features
         backtrace: true,   // <boolean> show full backtrace for errors
         compiler: [
-        'js:babel-register',
+            'js:babel-register',
         ],       // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
         dryRun: false,      // <boolean> invoke formatters without executing steps
         failFast: false,    // <boolean> abort the run on first failure
@@ -286,5 +286,5 @@ exports.config = {
         tags: [],           // <string[]> (expression) only execute the features or scenarios with tags matching the expression
         timeout: 20000,      // <number> timeout for step definitions
         ignoreUndefinedDefinitions: false, // <boolean> Enable this config to treat undefined definitions as warnings.
-        }
+    }
 };
