@@ -142,13 +142,11 @@ exports.config = {
     // See also: https://github.com/webdriverio/wdio-cucumber-framework#cucumberopts-options
     cucumberOpts: {
         require: [
-            './src/steps/given.js',
-            './src/steps/then.js',
-            './src/steps/when.js',
+            './e2e/features/step_definitions/ProjectSteps.js'
         ],        // <string[]> (file/dir) require files before executing features
         backtrace: true,   // <boolean> show full backtrace for errors
         compiler: [
-            'js:babel-register',
+
         ],       // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
         dryRun: false,      // <boolean> invoke formatters without executing steps
         failFast: false,    // <boolean> abort the run on first failure
