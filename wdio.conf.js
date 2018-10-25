@@ -141,7 +141,7 @@ exports.config = {
     // If you are using Cucumber you need to specify where your step definitions are located.
     // See also: https://github.com/webdriverio/wdio-cucumber-framework#cucumberopts-options
     cucumberOpts: {
-        require: ['./e2e/features/step_definitions/ProjectSteps.js'],   // <string[]> (file/dir) require files before executing features
+        require: ['./e2e/features/step_definitions/*.js'],   // <string[]> (file/dir) require files before executing features
         backtrace: true,   // <boolean> show full backtrace for errors
         compiler: [],       // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
         dryRun: false,      // <boolean> invoke formatters without executing steps
@@ -153,7 +153,7 @@ exports.config = {
         profile: [],        // <string[]> (name) specify the profile to use
         strict: true,      // <boolean> fail if there are any undefined or pending steps
         tags: [],           // <string[]> (expression) only execute the features or scenarios with tags matching the expression
-        timeout: 30000,      // <number> timeout for step definitions
+        timeout: 120000,      // <number> timeout for step definitions
         ignoreUndefinedDefinitions: false, // <boolean> Enable this config to treat undefined definitions as warnings.
     },
     // //==========

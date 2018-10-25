@@ -5,7 +5,7 @@ Feature: Create a New Project
     Given I log in as "user1"
     When I click the create project button
     And I create a new project with fields:
-      | name    | Public project |
+      | name    | test |
       | account | newAccount     |
       | privacy | public         |
 
