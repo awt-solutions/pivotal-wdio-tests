@@ -24,7 +24,7 @@ class Dashboard {
     }
 
     static switchTabs() {
-        CommonActions.waitAndClick('span[class="Dashboard__Tabs__tab"]')
+        CommonActions.waitAndClick('span[class="Dashboard__Tabs__tab"]');
     }
 
     static openProjectById(projectId) {
