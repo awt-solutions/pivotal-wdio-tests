@@ -27,9 +27,6 @@ class Project {
     getProjectNameOnSettings() {
         return CommonActions.waitAndGetValue(this.projectNameSetting);
     }
-    getProjectNameFromTitle() {
-        return CommonActions.waitGetTitle();
-    }
     clickAddStoryButton() {
         CommonActions.waitAndClick(this.addStoryButton);
         return new Story();
