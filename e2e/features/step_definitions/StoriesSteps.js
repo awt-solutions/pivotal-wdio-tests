@@ -2,10 +2,12 @@ const {Given, Then, When} = require('cucumber');
 const SingIn = require('../../pages/SignIn');
 const APIrequest = require('../../rest-api/RequestManager');
 const config = require('../../../config.json');
+const CommonActions = require('../../core/ui/CommonActions.js');
 
 let project;
 let story;
 let projectID ;
+let rowsHash;
 
 Given(/^user is on Pivotal Page$/, function () {
     let postProjectData = { name:'project created from api '+ new Date().getMilliseconds()};
@@ -15,27 +17,30 @@ Given(/^user is on Pivotal Page$/, function () {
     project = dashboard.openProjectById(projectID);
 });
 
-When(/^He click the Add story button$/, function () {
+When(/^I click the Add story button$/, function () {
     story = project.clickAddStoryButton();
 });
 
-When(/^He create a new story with fields:$/, function (dataTable) {
-    // let hashes = dataTable.hashes()[0];
-    // console.log(hashes);
-    // let rows = dataTable.rows()[0];
-    // console.log(rows);
-    // let raw = dataTable.raw();
-    // console.log(raw);
-    let rowsHash = dataTable.rowsHash();
-    console.log(rowsHash);
-    console.log(rowsHash.name);
-    console.log(rowsHash['name']);
+When(/^I create a new story with fields:$/, function (dataTable) {
+    rowsHash = dataTable.rowsHash();
     story.setStoryTitleField(rowsHash.name);
 });
 
-When(/^He click on save button$/, function () {
+When(/^I click on save button$/, function () {
     story.clickSaveStoryButton();
 });
 
 Then(/^I verify if the Story is created$/, function () {
+    var elementValue = CommonActions.waitAndGetText('span[class="tracker_markup"]');
+    expect(elementValue).to.equal(rowsHash.name);
+});
+
+Then(/^I verify the use requester is the user logged$/, function () {
+    //Expand the element
+    CommonActions.waitAndClick('button[class="expander undraggable"]');
+    var userValue = CommonActions.waitAndGetText('div[class="name hbsAvatarName"]');
+    //Click on profile
+    CommonActions.waitAndClick('button[aria-label="Profile Dropdown"]');
+    var userLogged = CommonActions.waitAndGetText('div[class="AvatarDetails__name"]');
+    expect(userValue).to.equal(userLogged);
 });
