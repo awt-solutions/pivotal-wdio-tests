@@ -1,26 +1,21 @@
-const {Given, Then, When} = require('cucumber');
-
-Given(/^I log in as "([^"]*)"$/, arg1 => {
-    console.log(`i login as${arg1}`);
-});
+const CommonActions = require('../../core/ui/CommonActions');
+const Dashboard = require('../../pages/Dashboard');
+const {Then, When} = require('cucumber');
+let project;
+let projectName;
 
 When(/^I click the create project button$/, () => {
-    console.log("i login as");
+    project = Dashboard.clickCreateProjectButton();
 });
 
 When(/^I create a new project with fields:$/, dataTable => {
-    console.log(dataTable);
-    let hashes = dataTable.hashes()[0];
-    console.log(hashes);
-    let rows = dataTable.rows()[0];
-    console.log(rows);
-    let raw = dataTable.raw();
-    console.log(raw);
     let rowsHash = dataTable.rowsHash();
-    console.log(rowsHash);
-    console.log("i login as");
+    projectName = rowsHash.name + Date.now();
+    rowsHash.name = projectName;
+    project = project.createProject(rowsHash);
 });
 
 Then(/^I verify if the project is created$/, () => {
-    console.log("i login as");
+    expect(`${projectName} - Pivotal Tracker`).to.equal(CommonActions.waitGetTitle());
 });
+
