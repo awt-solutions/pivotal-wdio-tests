@@ -16,10 +16,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        //'./e2e/specs/**/*.spec.js'
-        //'./e2e/specs/create.task.spec.js'
-        'e2e/specs/create.story.spec.js'
-        //'e2e/specs/create.project.spec.js'
+        'e2e/features/**/*.feature'
     ],
     // Patterns to exclude.
     exclude: [
@@ -128,28 +125,46 @@ exports.config = {
     //
     // Make sure you have the wdio adapter package for the specific framework installed
     // before running any tests.
-    framework: 'mocha',
+    framework: 'cucumber',
     //
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: http://webdriver.io/guide/reporters/dot.html
-    // reporters: ['dot'],
+    reporters: ['spec'],
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
-    mochaOpts: {
-        ui: 'bdd',
-        timeout: 99999999
+    // mochaOpts: {
+    //     ui: 'bdd',
+    //     timeout: 99999999
+    // },
+    // If you are using Cucumber you need to specify where your step definitions are located.
+    // See also: https://github.com/webdriverio/wdio-cucumber-framework#cucumberopts-options
+    cucumberOpts: {
+        require: ['./e2e/features/step_definitions/*.js'],   // <string[]> (file/dir) require files before executing features
+        backtrace: true,   // <boolean> show full backtrace for errors
+        compiler: [],       // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
+        dryRun: false,      // <boolean> invoke formatters without executing steps
+        failFast: false,    // <boolean> abort the run on first failure
+        format: ['pretty'], // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
+        colors: true,       // <boolean> disable colors in formatter output
+        snippets: false,     // <boolean> hide step definition snippets for pending steps
+        source: false,       // <boolean> hide source URIs
+        profile: [],        // <string[]> (name) specify the profile to use
+        strict: true,      // <boolean> fail if there are any undefined or pending steps
+        tags: [],           // <string[]> (expression) only execute the features or scenarios with tags matching the expression
+        timeout: 120000,      // <number> timeout for step definitions
+        ignoreUndefinedDefinitions: false, // <boolean> Enable this config to treat undefined definitions as warnings.
     },
-    //==========
-    // allure
-    //==========
-    reporters: ['dot', 'allure'],
-    reporterOptions: {
-        allure: {
-            outputDir: 'allure-results'
-        }
-    },
+    // //==========
+    //     // // allure
+    //     // //==========
+    //     // reporters: ['dot', 'allure'],
+    //     // reporterOptions: {
+    //     //     allure: {
+    //     //         outputDir: 'allure-results'
+    //     //     }
+    //     // },
     //
     // =====
     // Hooks

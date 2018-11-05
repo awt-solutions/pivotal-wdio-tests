@@ -1,21 +1,11 @@
-const Page = require('./Page');
 const CommonActions = require('../core/ui/CommonActions.js');
 /**
  * Page object to create task
  */
-class StoryTask extends Page {
+class StoryTask {
     constructor() {
-        super();
-        this.startAddingTaskButton = 'div[data-aid="TaskAdd"]';
         this.addNewTaskButton = 'button[data-aid="addTaskButton"]';
         this.taskTitleTextField = 'textArea[data-aid="new"]';
-        this.saveStoryChanges = 'button[class="autosaves button std close"]';
-    }
-    open(projectId) {
-        super.open(`/n/projects/${projectId}`);
-    }
-    clickStartAddingTaskButton() {
-        CommonActions.waitAndClick(this.startAddingTaskButton);
     }
     setTaskTitleTextField(taskTitle) {
         CommonActions.setInputTextField(this.taskTitleTextField, taskTitle);
@@ -23,17 +13,15 @@ class StoryTask extends Page {
     clickSaveAndAddNewTaskButton() {
         CommonActions.waitAndClick(this.addNewTaskButton);
     }
-    clickSaveStoryChanges() {
-        CommonActions.waitAndClick(this.saveStoryChanges);
-    }
-    //TODO change input for a json value
-    createTasks(tasksList) {
-        this.clickStartAddingTaskButton();
-        tasksList.forEach(task => {
-            this.setTaskTitleTextField(task);
-            this.clickSaveAndAddNewTaskButton();
+    // teskValue should be a json: e.g. {name:'task test'}
+    createTasks(taskValue) {
+        let fillTaskForm = {
+            'name': () => this.setTaskTitleTextField(taskValue.name),
+        };
+        Object.keys(taskValue).forEach(key => {
+            fillTaskForm[key].call();
         });
-        this.clickSaveStoryChanges();
+        this.clickSaveAndAddNewTaskButton();
     }
 }
 module.exports = StoryTask;

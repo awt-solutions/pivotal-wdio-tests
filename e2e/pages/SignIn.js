@@ -1,21 +1,15 @@
-const Page = require('./Page');
 const Dashboard = require('./Dashboard');
-let CommonActions = require('../core/ui/CommonActions.js');
-
+const CommonActions = require('../core/ui/CommonActions.js');
+const Config = require('../../config.json');
 /**
  * this class contains methods of SignIn.
  */
-class SignIn extends Page {
+class SignIn {
     constructor() {
-        super();
         this.userNameTextField = '#credentials_username';
         this.nextButton = '.app_signin_action_button';
         this.passwordTextField = '#credentials_password';
         this.signInButton = '.app_signin_action_button';
-    }
-
-    open() {
-        super.open('/signin');
     }
 
     setUserNameTextField(username) {
@@ -40,30 +34,33 @@ class SignIn extends Page {
     }
 
     /**
-    * Smart method for login
-    * @param userName to login with
-    * @param password to login with
-    */
-    static credentials(userName, password){
+     * Smart method for login
+     * @param userName to login with
+     * @param password to login with
+     */
+    static loginAs(userName, password) {
+        browser.url(Config.home_page_url.concat('/signin'));
         let signIn = new SignIn();
-        signIn.open();
-
-        try{
-          var currentUserSession = browser.getCookie('lastuser').value;
-          //Check if user username is logged already.
-          if (typeof userName !== currentUserSession && currentUserSession!== "undefined") {
-             browser.deleteCookie();
-          }
-        }
-        catch(error){
-          console.log("Is not any user logged cookie already: " + currentUserSession);
-          console.error(error);
-        }
-
         signIn.setUserNameTextField(userName);
         signIn.clickNextButton();
         signIn.setPasswordPassField(password);
         return signIn.clickSignInButton();
+    }
+
+    /**
+     * Smart method for login
+     * @param userName to login with
+     * @param password to login with
+     */
+    //join with loginAs method
+    static credentials(userName, password) {
+        var currentUserSession = browser.getCookie('lastuser').value;
+        //Check if user username is logged already.
+        if (typeof userName !== currentUserSession) {
+            browser.log('User logged was:' + ' ' + currentUserSession);
+            browser.deleteCookie();
+        }
+        return this.loginAs(userName, password);
     }
 }
 
